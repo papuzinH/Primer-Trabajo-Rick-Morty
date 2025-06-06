@@ -91,10 +91,10 @@ const appendElements = (characters, borrarGrilla = false) => {
   $modalClose.addEventListener('click', () => {
     $modal.classList.remove('is-active');
   })
-  $modalOpenArr.forEach(($card) => {
-    $card.addEventListener('click', () => {
-      const id = $card.dataset.id;
-      const character = characters[id - 1]; //Nos da la posicion del personaje en el array de characters
+    $modalOpenArr.forEach(($card) => {
+      $card.addEventListener('click', () => {
+        const id = $card.dataset.id;
+        const character = characters.find(ch => ch.id == id); //Buscamos por id en el array
       const { episode } = character
       const getEpisodesData = async () => {
         return Promise.all(episode.map(item => getEpisode(item))) //Resuelvo cada una de las promesas (fetchs de episodes)
